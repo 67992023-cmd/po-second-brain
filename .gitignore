@@ -1,0 +1,16 @@
+# Local SQLite database & biometric profiles (auto-created & seeded by server.py on startup)
+data/
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Environment variables
+.env
+.env.local

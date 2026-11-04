@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Po second brain</title>
+  <link rel="stylesheet" href="/styles.css?v=5" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- ====================================================================
+         FUNCTIONAL LAYER 1: LEADING SIDEBAR (Regular Liquid Glass, sidebars.md)
+         ==================================================================== -->
+    <aside id="app-sidebar" class="app-sidebar" aria-label="Primary Sidebar Navigation">
+      <div class="sidebar-window-header">
+        <span class="brand-name">Po second brain</span>
+      </div>
+
+      <div class="sidebar-section-label">Dashboard</div>
+      <nav class="sidebar-nav" aria-label="Open Workspace Sections">
+        <button class="nav-item active" data-view="overview">
+          <span class="nav-item-left">
+            <span class="nav-icon" aria-hidden="true">
+              <svg class="sf-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+            </span>
+            <span>Overview Summary</span>
+          </span>
+        </button>
+
+        <button class="nav-item" data-view="timeline">
+          <span class="nav-item-left">
+            <span class="nav-icon" aria-hidden="true">
+              <svg class="sf-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <span>Calendar &amp; Timeline</span>
+          </span>
+          <span class="nav-badge" id="badge-events">0</span>
+        </button>
+
+        <button class="nav-item" data-view="health">
+          <span class="nav-item-left">
+            <span class="nav-icon" aria-hidden="true">
+              <svg class="sf-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </span>
+            <span>Sleep &amp; Nutrition</span>
+          </span>
+          <span class="nav-badge" id="badge-health">7d</span>
+        </button>
+
+        <button class="nav-item" data-view="brain">
+          <span class="nav-item-left">
+            <span class="nav-icon" aria-hidden="true">
+              <svg class="sf-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5 14.5 14.5"/><path d="M14.5 9.5 9.5 14.5"/></svg>
+            </span>
+            <span>Second Brain AI</span>
+          </span>
+          <span class="nav-badge" id="badge-memories">0</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-section-label">Protected Vaults (Biometric)</div>
+      <nav class="sidebar-nav" aria-label="Protected Sections Requiring Authentication">
+        <button class="nav-item" data-view="diary" data-protected="true">
+          <span class="nav-item-left">
+            <span class="nav-icon" aria-hidden="true">
+              <svg class="sf-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </span>
+            <span>Diary Library</span>
+          </span>
+          <span class="nav-badge locked" id="badge-diaries-lock">Locked</span>
+        </button>
+
+        <button class="nav-item" data-view="vault" data-protected="true">
+          <span class="nav-item-left">
+            <span class="nav-icon" aria-hidden="true">
+              <svg class="sf-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </span>
+            <span>Password Vault</span>
+          </span>
+          <span class="nav-badge locked" id="badge-vault-lock">Locked</span>
+        </button>
+
+        <button class="nav-item" data-view="network" data-protected="true">
+          <span class="nav-item-left">
+            <span class="nav-icon" aria-hidden="true">
+              <svg class="sf-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </span>
+            <span>IP &amp; Security</span>
+          </span>
+          <span class="nav-badge locked" id="badge-net-lock">Locked</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-telemetry-card" aria-label="Live Network Status">
+        <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">
+          <span class="status-dot"></span>Network Telemetry
+        </div>
+        <div class="telemetry-row">
+          <span style="color: var(--text-tertiary);">Client IP</span>
+          <span class="mono-code" id="sidebar-client-ip">127.0.0.1</span>
+        </div>
+        <div class="telemetry-row">
+          <span style="color: var(--text-tertiary);">LAN IP</span>
+          <span class="mono-code" id="sidebar-lan-ip">Detecting...</span>
+        </div>
+        <div class="telemetry-row">
+          <span style="color: var(--text-tertiary);">Vault Gate</span>
+          <span id="sidebar-auth-method" style="font-weight: 600; color: var(--signal-warning);">Locked</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         MAIN WORKSPACE AREA
+         ==================================================================== -->
+    <div class="workspace-area">
+      <!-- FUNCTIONAL LAYER 2: FLOATING GLASS TOOLBAR -->
+      <header class="workspace-toolbar">
+        <div class="toolbar-left">
+          <button id="btn-toggle-sidebar" class="btn btn-ghost btn-sm" aria-label="Toggle Sidebar">
+            <svg class="sf-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+            <span>Sidebar</span>
+          </button>
+          <div class="toolbar-title-group">
+            <h1 class="toolbar-title" id="current-view-title">Overview Summary</h1>
+            <span class="toolbar-subtitle" id="current-view-subtitle">Daily Sleep, Nutrition &amp; Work Calendar at a glance</span>
+          </div>
+        </div>
+
+        <div class="toolbar-right">
+          <!-- Clean Liquid Glass AI Model Selector & Floating Popover Menu -->
+          <div class="ai-picker-wrapper">
+            <button type="button" id="btn-ai-model-picker" class="ai-glass-picker-btn" aria-haspopup="true" aria-expanded="false">
+              <span class="ai-dot"></span>
+              <span id="active-ai-pill">Qwen 2.5 7B · Ollama</span>
+              <svg class="sf-icon" style="width:13px; height:13px; opacity:0.7;" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+
+            <div id="ai-model-popover" class="ai-glass-popover hidden" role="menu" aria-label="Select Second Brain AI Model">
+              <div class="ai-popover-group-title">On-Device &amp; Offline (MacBook Air M2)</div>
+              <button type="button" class="ai-menu-item selected" data-ai-select="ollama" data-ai-model="qwen2.5:7b" role="menuitem">
+                <span class="ai-menu-left">
+                  <span class="ai-menu-check">✓</span>
+                  <span class="ai-menu-text">
+                    <span class="ai-menu-name">Qwen 2.5 7B (Ollama)</span>
+                    <span class="ai-menu-sub" id="popover-ollama-sub">Local M2 GPU · 4.7 GB · Private</span>
+                  </span>
+                </span>
+                <span class="pill pill-success" style="font-size:10px;">Active</span>
+              </button>
+
+              <button type="button" class="ai-menu-item" data-ai-select="local_smart" role="menuitem">
+                <span class="ai-menu-left">
+                  <span class="ai-menu-check"></span>
+                  <span class="ai-menu-text">
+                    <span class="ai-menu-name">Built-in Smart Engine</span>
+                    <span class="ai-menu-sub">Instant · Zero API Keys</span>
+                  </span>
+                </span>
+              </button>
+
+              <div class="ai-menu-divider"></div>
+              <div class="ai-popover-group-title">Cloud APIs (Works on Any Website)</div>
+
+              <button type="button" class="ai-menu-item" data-ai-select="gemini" role="menuitem">
+                <span class="ai-menu-left">
+                  <span class="ai-menu-check"></span>
+                  <span class="ai-menu-text">
+                    <span class="ai-menu-name">Gemini 2.5 Flash</span>
+                    <span class="ai-menu-sub">Google AI Studio · Free Tier</span>
+                  </span>
+                </span>
+              </button>
+
+              <button type="button" class="ai-menu-item" data-ai-select="groq" role="menuitem">
+                <span class="ai-menu-left">
+                  <span class="ai-menu-check"></span>
+                  <span class="ai-menu-text">
+                    <span class="ai-menu-name">Llama 3.3 70B Versatile</span>
+                    <span class="ai-menu-sub">Groq Cloud · High Speed</span>
+                  </span>
+                </span>
+              </button>
+
+              <button type="button" class="ai-menu-item" data-ai-select="openrouter" role="menuitem">
+                <span class="ai-menu-left">
+                  <span class="ai-menu-check"></span>
+                  <span class="ai-menu-text">
+                    <span class="ai-menu-name">OpenRouter Free</span>
+                    <span class="ai-menu-sub">Cloud Multi-Model</span>
+                  </span>
+                </span>
+              </button>
+
+              <div class="ai-menu-divider"></div>
+              <button type="button" class="ai-menu-item" id="btn-configure-cloud-keys" role="menuitem">
+                <span class="ai-menu-left">
+                  <span class="ai-menu-check"></span>
+                  <span class="ai-menu-text">
+                    <span class="ai-menu-name">Configure Cloud API Keys…</span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <button id="btn-theme-cycle" class="btn btn-sm" aria-label="Switch Appearance">Appearance</button>
+          <button id="btn-relock-vault" class="btn btn-sm" style="display: none;" aria-label="Re-lock Protected Vaults">
+            Lock Vaults
+          </button>
+          <button id="btn-quick-brain" class="btn btn-prominent btn-sm">Ask Second Brain</button>
+        </div>
+      </header>
+
+      <!-- CONTENT LAYER -->
+      <main class="workspace-content">
+        <!-- ================================================================
+             ENTRY PAGE (VIEW 0): OVERVIEW SUMMARY DASHBOARD WITH DONUT CHARTS
+             ================================================================ -->
+        <section id="view-overview" class="view-panel active" aria-label="Overview Summary Dashboard">
+          <!-- 3 Clean Apple Donut Ring Charts (Sleep, Calories, Calendar) -->
+          <div class="donut-grid">
+            <!-- Donut Card 1: Sleep Data -->
+            <div class="donut-card" role="region" aria-label="Sleep Recovery Donut Chart">
+              <div class="donut-info">
+                <span class="donut-eyebrow">Apple Health · Sleep</span>
+                <h2 class="donut-title">Sleep Recovery</h2>
+                <div class="donut-KPI" id="ov-sleep-val">7.8 hrs</div>
+                <p class="donut-subtext" id="ov-sleep-sub">Goal: 8.0 hrs · 7d Avg: 7.6 hrs</p>
+              </div>
+              <div class="donut-figure">
+                <svg class="donut-svg" viewBox="0 0 100 100" role="img" aria-label="Sleep goal progress ring">
+                  <circle class="donut-track" cx="50" cy="50" r="40"></circle>
+                  <circle
+                    id="donut-ring-sleep"
+                    class="donut-segment"
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    stroke="var(--ring-sleep)"
+                    stroke-dasharray="251.3"
+                    stroke-dashoffset="10"
+                  ></circle>
+                </svg>
+                <div class="donut-center-label">
+                  <span class="donut-pct" id="ov-sleep-pct">98%</span>
+                  <span class="donut-unit">Goal</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Donut Card 2: Eat / Calorie Data -->
+            <div class="donut-card" role="region" aria-label="Daily Calories Donut Chart">
+              <div class="donut-info">
+                <span class="donut-eyebrow">Apple Health · Nutrition</span>
+                <h2 class="donut-title">Daily Calories</h2>
+                <div class="donut-KPI" id="ov-kcal-val">1,840 kcal</div>
+                <p class="donut-subtext" id="ov-kcal-sub">Target: 2,100 kcal · 122g Protein</p>
+              </div>
+              <div class="donut-figure">
+                <svg class="donut-svg" viewBox="0 0 100 100" role="img" aria-label="Calorie target progress ring">
+                  <circle class="donut-track" cx="50" cy="50" r="40"></circle>
+                  <circle
+                    id="donut-ring-kcal"
+                    class="donut-segment"
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    stroke="var(--signal-success)"
+                    stroke-dasharray="251.3"
+                    stroke-dashoffset="35"
+                  ></circle>
+                </svg>
+                <div class="donut-center-label">
+                  <span class="donut-pct" id="ov-kcal-pct">88%</span>
+                  <span class="donut-unit">Intake</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Donut Card 3: Calendar & Work Timeline -->
+            <div class="donut-card" role="region" aria-label="Work Timeline Completion Donut Chart">
+              <div class="donut-info">
+                <span class="donut-eyebrow">Work Timeline</span>
+                <h2 class="donut-title">Calendar Tasks</h2>
+                <div class="donut-KPI" id="ov-tasks-val">1 / 6</div>
+                <p class="donut-subtext" id="ov-tasks-sub">5 upcoming milestones scheduled</p>
+                <div style="margin-top: 6px;">
+                  <button type="button" class="btn btn-prominent btn-sm" onclick="openFullPageCalendar()">Full Page Calendar</button>
+                </div>
+              </div>
+              <div class="donut-figure">
+                <svg class="donut-svg" viewBox="0 0 100 100" role="img" aria-label="Calendar tasks completion ring">
+                  <circle class="donut-track" cx="50" cy="50" r="40"></circle>
+                  <circle
+                    id="donut-ring-tasks"
+                    class="donut-segment"
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    stroke="var(--accent-primary)"
+                    stroke-dasharray="251.3"
+                    stroke-dashoffset="100"
+                  ></circle>
+                </svg>
+                <div class="donut-center-label">
+                  <span class="donut-pct" id="ov-tasks-pct">17%</span>
+                  <span class="donut-unit">Done</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clean Second Brain Quick Command Bar -->
+          <div class="content-card" style="margin-bottom: 24px; padding: 16px 22px;">
+            <form id="form-overview-ai" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+              <span class="pill pill-accent">Second Brain AI</span>
+              <input
+                type="text"
+                id="input-overview-ai"
+                class="form-input"
+                style="flex: 1; min-width: 240px;"
+                placeholder="Tell your Second Brain: 'Schedule Network Lab tomorrow at 2pm' or 'I slept 8 hours and ate 650 kcal'"
+                aria-label="Second Brain Quick Command"
+              />
+              <button type="submit" class="btn btn-prominent">Run Command</button>
+            </form>
+          </div>
+
+          <!-- Ollama & Qwen 2.5 7B AI Model Showcase & Detailed Presentation -->
+          <div class="content-card" style="margin-bottom: 22px;">
+            <div class="card-header">
+              <div>
+                <span class="donut-eyebrow" style="color: var(--accent-primary);">Local LLM Runtime &amp; Neural Engine</span>
+                <h3 class="card-title" style="font-size: 20px; margin-top: 2px;">Ollama &amp; Qwen 2.5 7B — Second Brain AI Architecture</h3>
+                <p class="card-subtitle">Self-hosted 7.6B parameter instruction-tuned transformer running locally via Ollama with full SQLite RAG &amp; autonomous action execution</p>
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                <span class="pill pill-success" id="ov-ollama-live-badge">Ollama · qwen2.5:7b Active</span>
+                <button class="btn btn-prominent btn-sm" onclick="requestViewSwitch('brain')">Open Second Brain Studio</button>
+              </div>
+            </div>
+
+            <div class="ai-showcase-hero">
+              <!-- Left: Visual Photo of Ollama + Qwen 2.5 7B -->
+              <div class="ai-showcase-figure">
+                <img
+                  src="/ollama-qwen-showcase.jpg?v=1"
+                  alt="Ollama and Qwen 2.5 7B Neural Second Brain Architecture"
+                  class="ai-showcase-img"
+                />
+                <div class="ai-showcase-caption">
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;">
+                    <span class="pill pill-accent" style="background: rgba(10, 132, 255, 0.28); color: #fff;">OLLAMA RUNTIME</span>
+                    <span class="pill pill-success" style="background: rgba(48, 209, 88, 0.25); color: #fff;">QWEN 2.5 · 7B (Q4_K_M)</span>
+                    <span class="mono-code" style="font-size: 11px; color: rgba(235,235,245,0.8);">ID: 98b887bf87b0 · 4.7 GB</span>
+                  </div>
+                  <div style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">
+                    On-Device Retrieval-Augmented Generation (RAG) &amp; Action Agent
+                  </div>
+                  <div style="font-size: 12.5px; color: rgba(235, 235, 245, 0.78); margin-top: 3px;">
+                    Connected directly to Calendar Timeline, Apple Health Sleep &amp; Nutrition, Personal Diary, and Memory Bank over <span class="mono-code" style="color:#fff;">localhost:11434</span>.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Technical Explanation & Live Specifications -->
+              <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 14px;">
+                <div>
+                  <h4 style="margin: 0 0 8px; font-size: 16px; font-weight: 700;">How Ollama &amp; Qwen 2.5 Power Po Second Brain</h4>
+                  <p style="margin: 0 0 10px; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+                    <strong>Ollama</strong> acts as the local model server (<span class="mono-code">http://localhost:11434</span>) hosting <strong>Qwen 2.5 7B</strong> — an advanced 7.61-billion-parameter Large Language Model pretrained on <strong>18 trillion tokens</strong>. Unlike standard chatbots that forget your data, Po Second Brain injects a live snapshot of your personal SQLite database into Qwen 2.5’s <strong>32,768-token context window</strong> on every query.
+                  </p>
+                  <p style="margin: 0; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+                    When you issue a command, Qwen 2.5 both answers your question and emits structured <span class="mono-code">[ACTION: {...}]</span> payloads that automatically schedule calendar milestones, log diary entries, record sleep/calorie data, and store long-term memories.
+                  </p>
+
+                  <div class="ai-spec-grid">
+                    <div class="ai-spec-box">
+                      <div class="ai-spec-label">Primary Local Model</div>
+                      <div class="ai-spec-value">qwen2.5:7b (7.61B)</div>
+                    </div>
+                    <div class="ai-spec-box">
+                      <div class="ai-spec-label">Quantization &amp; Size</div>
+                      <div class="ai-spec-value">Q4_K_M · 4.7 GB GGUF</div>
+                    </div>
+                    <div class="ai-spec-box">
+                      <div class="ai-spec-label">Context &amp; Keep-Alive</div>
+                      <div class="ai-spec-value">32,768 Tokens · 30m</div>
+                    </div>
+                    <div class="ai-spec-box">
+                      <div class="ai-spec-label">Ollama API Endpoint</div>
+                      <div class="ai-spec-value">127.0.0.1:11434/api/chat</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Protected Vaults Quick Access Bar inside Showcase -->
+                <div style="padding-top: 12px; border-top: 1px solid var(--separator-subtle); display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 12.5px; font-weight: 600; color: var(--text-secondary);">Protected Vaults Gate:</span>
+                    <span class="pill pill-warning" id="ov-vault-status-pill">Locked</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="btn btn-sm" onclick="requestViewSwitch('diary')">Diary Library</button>
+                    <button class="btn btn-sm" onclick="requestViewSwitch('vault')">Password Vault</button>
+                    <button class="btn btn-sm" onclick="requestViewSwitch('network')">IP &amp; Security</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3-Column Detailed Breakdown of the AI Pipeline -->
+            <div class="grid-3">
+              <div class="ai-tier-card featured">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="pill pill-accent">1. Ollama Local Server</span>
+                  <span class="mono-code" style="font-size: 11px; color: var(--text-tertiary);">Port 11434</span>
+                </div>
+                <h4 style="margin: 2px 0; font-size: 15px; font-weight: 700;">100% Offline &amp; Private Execution</h4>
+                <ul class="ai-tier-list">
+                  <li><strong>Zero Cloud Leakage:</strong> All inference runs locally through <span class="mono-code">/usr/local/bin/ollama</span> on loopback <span class="mono-code">127.0.0.1</span>.</li>
+                  <li><strong>Auto Model Discovery:</strong> Queries <span class="mono-code">GET /api/tags</span> to detect installed GGUF weights (<span class="mono-code">qwen2.5:7b</span>) automatically.</li>
+                  <li><strong>Warm Memory Retention:</strong> Uses <span class="mono-code">keep_alive: "30m"</span> so weights stay loaded in RAM for instant follow-up responses.</li>
+                </ul>
+              </div>
+
+              <div class="ai-tier-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="pill pill-success">2. Qwen 2.5 7B Intelligence</span>
+                  <span class="mono-code" style="font-size: 11px; color: var(--text-tertiary);">18T Pretraining</span>
+                </div>
+                <h4 style="margin: 2px 0; font-size: 15px; font-weight: 700;">RAG Context + Structured Actions</h4>
+                <ul class="ai-tier-list">
+                  <li><strong>Cross-Domain RAG:</strong> Synthesizes your Sleep hours, Calorie/Protein intake, Calendar tasks, and Diary entries in real time.</li>
+                  <li><strong>Autonomous Agent Protocol:</strong> Generates JSON action blocks (<span class="mono-code">add_event</span>, <span class="mono-code">add_diary</span>, <span class="mono-code">log_health</span>, <span class="mono-code">add_memory</span>) that mutate SQLite state with 1-click Undo.</li>
+                  <li><strong>Vault Redaction Guard:</strong> AES-256-CTR password ciphertexts are never sent to the LLM context.</li>
+                </ul>
+              </div>
+
+              <div class="ai-tier-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="pill">3. Hybrid Cloud &amp; Fallback</span>
+                  <span class="mono-code" style="font-size: 11px; color: var(--text-tertiary);">Multi-Engine</span>
+                </div>
+                <h4 style="margin: 2px 0; font-size: 15px; font-weight: 700;">Seamless Switching Anywhere</h4>
+                <ul class="ai-tier-list">
+                  <li><strong>Liquid Glass Model Selector:</strong> Switch models anytime from the top toolbar dropdown menu.</li>
+                  <li><strong>Free Cloud APIs (External Hosting):</strong> Supports <strong>Groq Llama 3.3 70B</strong>, <strong>Google Gemini 2.5 Flash</strong>, and <strong>OpenRouter</strong> when deployed online.</li>
+                  <li><strong>Built-in Smart Engine:</strong> Deterministic local NLP fallback guarantees 100% uptime even if Ollama is stopped.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 1: FULL-PAGE CALENDAR & WORK TIMELINE
+             ================================================================ -->
+        <section id="view-timeline" class="view-panel" aria-label="Work Timeline and Calendar">
+          <div class="content-card" style="margin-bottom: 20px; padding: 14px 20px;">
+            <form id="form-ai-quick-schedule" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+              <span class="pill pill-accent">AI Calendar Agent</span>
+              <input
+                type="text"
+                id="input-ai-schedule"
+                class="form-input"
+                style="flex: 1; min-width: 240px;"
+                placeholder="Tell Qwen 2.5 / Second Brain to schedule: 'Add Network Lab tomorrow from 2pm to 4pm'"
+              />
+              <button type="submit" class="btn btn-prominent">Add with AI</button>
+            </form>
+          </div>
+
+          <!-- FULL-WIDTH LARGE MONTH CALENDAR -->
+          <div id="full-calendar-card" class="content-card" style="margin-bottom: 22px;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title" id="cal-month-label" style="font-size: 20px; font-weight: 700;">November 2026</h3>
+                <p class="card-subtitle">Full-page calendar view — click any day to select date for new events</p>
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                <button id="btn-cal-fullscreen" class="btn btn-sm" title="Expand Calendar Across Entire Window">
+                  Expand Full Screen
+                </button>
+                <div style="display: flex; gap: 6px;">
+                  <button id="btn-cal-prev" class="btn btn-sm">Prev Month</button>
+                  <button id="btn-cal-today" class="btn btn-sm">Today</button>
+                  <button id="btn-cal-next" class="btn btn-sm">Next Month</button>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-month-grid calendar-full-grid" id="calendar-grid"></div>
+          </div>
+
+          <!-- Bottom Row: Work Timeline Checklist (Left) + Add Event Form (Right) -->
+          <div class="grid-main-aside" id="calendar-bottom-split">
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Work Timeline &amp; Milestones</h3>
+                  <p class="card-subtitle">Click the checkbox to mark milestones completed</p>
+                </div>
+                <div class="segmented-control" role="tablist">
+                  <button class="segment-btn active" data-ev-filter="all">All</button>
+                  <button class="segment-btn" data-ev-filter="scheduled">Pending</button>
+                  <button class="segment-btn" data-ev-filter="completed">Completed</button>
+                </div>
+              </div>
+              <div id="timeline-events-list" class="timeline-list"></div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Add Timeline Event</h3>
+                  <p class="card-subtitle">Create a structured milestone or class session</p>
+                </div>
+              </div>
+              <form id="form-manual-event">
+                <div class="form-group">
+                  <label class="form-label" for="ev-title">Event Title</label>
+                  <input type="text" id="ev-title" class="form-input" placeholder="e.g., Submit LAB_BasicNetwork Report" required />
+                </div>
+                <div class="grid-3" style="gap: 10px;">
+                  <div class="form-group">
+                    <label class="form-label" for="ev-date">Date</label>
+                    <input type="date" id="ev-date" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="ev-start">Start</label>
+                    <input type="time" id="ev-start" class="form-input" value="14:00" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="ev-end">End</label>
+                    <input type="time" id="ev-end" class="form-input" value="15:30" required />
+                  </div>
+                </div>
+                <div class="grid-2" style="gap: 10px;">
+                  <div class="form-group">
+                    <label class="form-label" for="ev-category">Category</label>
+                    <select id="ev-category" class="form-select">
+                      <option value="network-lab">Network Lab</option>
+                      <option value="work">Deep Work</option>
+                      <option value="study">University Study</option>
+                      <option value="milestone">Project Milestone</option>
+                      <option value="health">Health &amp; Fitness</option>
+                      <option value="personal">Personal</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="ev-priority">Priority</label>
+                    <select id="ev-priority" class="form-select">
+                      <option value="high">High Priority</option>
+                      <option value="medium" selected>Medium Priority</option>
+                      <option value="low">Low Priority</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="ev-notes">Notes</label>
+                  <input type="text" id="ev-notes" class="form-input" placeholder="Optional details..." />
+                </div>
+                <button type="submit" class="btn btn-prominent" style="width: 100%;">Save Event</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 2: SECOND BRAIN AI
+             ================================================================ -->
+        <section id="view-brain" class="view-panel" aria-label="Second Brain AI Assistant">
+          <div class="grid-main-aside">
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Second Brain Action Agent (RAG)</h3>
+                  <p class="card-subtitle">
+                    Reads &amp; writes across your Calendar, Diary Library, Apple Health, and Core Memories.
+                  </p>
+                </div>
+                <span class="pill pill-success">Vault Privacy Shield Active</span>
+              </div>
+
+              <div class="prompt-chips">
+                <button class="prompt-chip" data-prompt="Summarize my upcoming schedule and how my sleep has been this week.">
+                  Synthesize my week &amp; sleep
+                </button>
+                <button class="prompt-chip" data-prompt="Schedule Network Lab final check tomorrow from 3pm to 4pm">
+                  Schedule Network Lab tomorrow 3pm
+                </button>
+                <button class="prompt-chip" data-prompt="Write a diary entry: Completed my Second Brain website with Touch ID and IP firewall.">
+                  Write a diary entry for today
+                </button>
+                <button class="prompt-chip" data-prompt="I slept 8.0 hours last night and ate 620 kcal salmon rice for lunch">
+                  Log 8h sleep &amp; 620 kcal meal
+                </button>
+                <button class="prompt-chip" data-prompt="What game and personal accounts do I have saved in my Password Vault?">
+                  Check saved Vault accounts
+                </button>
+                <button class="prompt-chip" data-prompt="Remember that my university student ID is 66010999 and lab room is ECC-804">
+                  Remember a new personal fact
+                </button>
+              </div>
+
+              <div id="brain-chat-stream" class="chat-stream"></div>
+
+              <form id="form-brain-chat" style="margin-top: 14px; display: flex; gap: 10px;">
+                <input
+                  type="text"
+                  id="input-brain-prompt"
+                  class="form-input"
+                  placeholder="Ask anything about your life data, or command AI to schedule, log health, write diary, or remember..."
+                  required
+                />
+                <button type="submit" id="btn-brain-send" class="btn btn-prominent">Send to Second Brain</button>
+              </form>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <div class="content-card">
+                <div class="card-header">
+                  <div>
+                    <h3 class="card-title">AI Brain Engine (Cloud &amp; Offline)</h3>
+                    <p class="card-subtitle">Switch between Free Cloud APIs, Offline Ollama, or Built-in Engine</p>
+                  </div>
+                  <span class="pill" id="ollama-status-pill">Checking Ollama...</span>
+                </div>
+
+                <form id="form-ai-settings">
+                  <div class="form-group">
+                    <label class="form-label" for="select-ai-provider">Active AI Provider</label>
+                    <select id="select-ai-provider" class="form-select">
+                      <option value="auto">Auto (Cloud API → Offline Ollama → Built-in Engine)</option>
+                      <option value="local_smart">Built-in Smart Engine (100% Free, Zero Setup, Works Everywhere)</option>
+                      <option value="ollama">Offline Local Ollama (MacBook Air M2 — localhost:11434)</option>
+                      <option value="gemini">Google Gemini API (Free Tier via Google AI Studio — Works on Any Website)</option>
+                      <option value="groq">Groq Cloud API (Free Llama 3.3 70B — Ultra Fast)</option>
+                      <option value="openrouter">OpenRouter API (Free Models)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="input-gemini-key">Google Gemini API Key (Optional — aistudio.google.com)</label>
+                    <input type="password" id="input-gemini-key" class="form-input" placeholder="AIzaSy... (Leave blank to use Built-in or Ollama)" />
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="input-groq-key">Groq Free API Key (Optional — console.groq.com)</label>
+                    <input type="password" id="input-groq-key" class="form-input" placeholder="gsk_... (Works when hosted on external websites)" />
+                  </div>
+
+                  <div class="grid-2" style="gap: 10px;">
+                    <div class="form-group">
+                      <label class="form-label" for="input-ollama-url">Local Ollama URL</label>
+                      <input type="text" id="input-ollama-url" class="form-input" value="http://localhost:11434" />
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="input-ollama-model">Ollama Model</label>
+                      <input type="text" id="input-ollama-model" class="form-input" value="qwen2.5:7b" />
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn" style="width: 100%; font-weight: 600;">Save AI Settings</button>
+                </form>
+              </div>
+
+              <div class="content-card">
+                <div class="card-header">
+                  <div>
+                    <h3 class="card-title">Second Brain Memory Bank</h3>
+                    <p class="card-subtitle">Persistent facts injected into every AI query</p>
+                  </div>
+                </div>
+                <form id="form-add-memory" style="display: flex; gap: 8px; margin-bottom: 12px;">
+                  <input type="text" id="input-memory-fact" class="form-input" placeholder="Add a fact to remember..." required />
+                  <button type="submit" class="btn btn-sm">Add</button>
+                </form>
+                <div id="memories-list" class="timeline-list"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 3 (PROTECTED): PERSONAL DIARY LIBRARY
+             ================================================================ -->
+        <section id="view-diary" class="view-panel" aria-label="Personal Diary Library">
+          <div class="diary-split-view">
+            <div class="content-card diary-list-card">
+              <div class="card-header" style="margin-bottom: 8px;">
+                <div>
+                  <h3 class="card-title">Diary Library</h3>
+                  <p class="card-subtitle">Protected · Indexed by Second Brain</p>
+                </div>
+                <button id="btn-new-diary" class="btn btn-prominent btn-sm">+ New Entry</button>
+              </div>
+
+              <input
+                type="search"
+                id="input-diary-search"
+                class="form-input"
+                placeholder="Search titles, content, or #tags..."
+              />
+
+              <div class="segmented-control" id="diary-notebook-tabs" style="width: 100%; justify-content: space-between;">
+                <button class="segment-btn active" data-notebook="all" style="flex: 1;">All</button>
+                <button class="segment-btn" data-notebook="Engineering Log" style="flex: 1;">Eng Log</button>
+                <button class="segment-btn" data-notebook="Personal Reflections" style="flex: 1;">Personal</button>
+              </div>
+
+              <div id="diary-entries-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px; overflow-y: auto; max-height: 460px;"></div>
+            </div>
+
+            <div class="diary-paper">
+              <form id="form-diary-editor">
+                <input type="hidden" id="diary-id" value="" />
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
+                  <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <input type="date" id="diary-date" class="form-input" style="width: auto;" required />
+                    <select id="diary-notebook" class="form-select" style="width: auto;">
+                      <option value="Personal Reflections">Personal Reflections</option>
+                      <option value="Engineering Log">Engineering Log</option>
+                      <option value="Health & Habits">Health &amp; Habits</option>
+                      <option value="Study Notes">Study Notes</option>
+                      <option value="Second Brain Notes">Second Brain Notes</option>
+                    </select>
+                    <select id="diary-mood" class="form-select" style="width: auto;">
+                      <option value="Focused">Mood: Focused</option>
+                      <option value="Inspired">Mood: Inspired</option>
+                      <option value="Reflective">Mood: Reflective</option>
+                      <option value="Accomplished">Mood: Accomplished</option>
+                      <option value="Calm">Mood: Calm</option>
+                    </select>
+                  </div>
+                  <div style="display: flex; gap: 8px;">
+                    <button type="button" id="btn-delete-diary" class="btn btn-danger btn-sm">Delete</button>
+                    <button type="submit" class="btn btn-prominent btn-sm">Save Diary Entry</button>
+                  </div>
+                </div>
+
+                <input
+                  type="text"
+                  id="diary-title"
+                  class="diary-title-input"
+                  placeholder="Title your reflection..."
+                  required
+                />
+
+                <div style="margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+                  <input
+                    type="text"
+                    id="diary-tags"
+                    class="form-input"
+                    style="font-size: 12px;"
+                    placeholder="Tags (comma-separated, e.g. network-lab, m2, thoughts)"
+                  />
+                  <span id="diary-word-count" class="mono-code">0 words</span>
+                </div>
+
+                <textarea
+                  id="diary-content"
+                  class="diary-body-textarea"
+                  placeholder="Write freely in your personal library..."
+                  required
+                ></textarea>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 4 (PROTECTED): PERSONAL & GAME PASSWORD VAULT
+             ================================================================ -->
+        <section id="view-vault" class="view-panel" aria-label="Personal and Game Password Vault">
+          <div class="grid-main-aside">
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Encrypted Password Vault</h3>
+                  <p class="card-subtitle">
+                    AES-256-CTR / PBKDF2-HMAC-SHA256 encrypted at rest. Protected by Biometric / Passcode Gate.
+                  </p>
+                </div>
+                <div class="segmented-control" id="vault-filter-tabs">
+                  <button class="segment-btn active" data-vault-filter="all">All Credentials</button>
+                  <button class="segment-btn" data-vault-filter="personal">Personal</button>
+                  <button class="segment-btn" data-vault-filter="game">Game Passwords</button>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 14px; display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                <input
+                  type="search"
+                  id="input-vault-search"
+                  class="form-input"
+                  placeholder="Search service, game, or username..."
+                  style="max-width: 340px;"
+                />
+                <span class="pill pill-success">Vault Unlocked</span>
+              </div>
+
+              <div style="overflow-x: auto;">
+                <table class="vault-table" aria-label="Saved Passwords">
+                  <thead>
+                    <tr>
+                      <th>Service / Game</th>
+                      <th>Category</th>
+                      <th>Username / ID</th>
+                      <th>Password (Encrypted)</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="vault-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Store New Credential</h3>
+                  <p class="card-subtitle">Keep Personal or Game passwords inside your vault</p>
+                </div>
+              </div>
+              <form id="form-vault-add">
+                <div class="form-group">
+                  <label class="form-label" for="vault-service">Service or Game Name</label>
+                  <input type="text" id="vault-service" class="form-input" placeholder="e.g., Steam, Riot Games, University Portal" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="vault-type">Vault Category</label>
+                  <select id="vault-type" class="form-select">
+                    <option value="personal">Personal Password (Email, School, Bank, Router)</option>
+                    <option value="game">Game Password (Steam, Riot, Epic, HoYoverse)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="vault-username">Username / Email / Riot ID</label>
+                  <input type="text" id="vault-username" class="form-input" placeholder="e.g., po@university.ac.th or PoAce#TH1" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="vault-password">Password</label>
+                  <div style="display: flex; gap: 6px;">
+                    <input type="text" id="vault-password" class="form-input" placeholder="Enter or generate password" required />
+                    <button type="button" id="btn-generate-pw" class="btn btn-sm">Generate</button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="vault-url">Login URL (Optional)</label>
+                  <input type="text" id="vault-url" class="form-input" placeholder="https://..." />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="vault-notes">Notes (UID, Server Region, 2FA Backup)</label>
+                  <input type="text" id="vault-notes" class="form-input" placeholder="e.g., Asia Server, UID 804928172" />
+                </div>
+                <button type="submit" class="btn btn-prominent" style="width: 100%;">Encrypt &amp; Save to Vault</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 5: APPLE HEALTH (SLEEP & EAT DATA)
+             ================================================================ -->
+        <section id="view-health" class="view-panel" aria-label="Apple Health Sleep and Nutrition">
+          <div class="grid-2" style="margin-bottom: 22px;">
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Sleep Duration &amp; Recovery (7-Day History)</h3>
+                  <p class="card-subtitle">HKCategoryTypeIdentifierSleepAnalysis</p>
+                </div>
+                <span class="pill pill-sleep" id="health-sleep-avg-pill">Avg: 7.6 hrs</span>
+              </div>
+              <div id="chart-sleep-bars" class="bar-chart-container"></div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Daily Nutrition &amp; Eat Data (7-Day History)</h3>
+                  <p class="card-subtitle">HKQuantityTypeIdentifierDietaryEnergyConsumed</p>
+                </div>
+                <span class="pill pill-success" id="health-kcal-avg-pill">Avg: 2,080 kcal</span>
+              </div>
+              <div id="chart-nutrition-bars" class="bar-chart-container"></div>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Import from Apple Health</h3>
+                  <p class="card-subtitle">Upload Apple Health `export.xml`, `.csv`, or `.json`</p>
+                </div>
+              </div>
+              <label for="input-health-file" class="dropzone-box" style="display: block; margin-bottom: 12px;">
+                <div style="font-weight: 600; font-size: 13px;">Choose Apple Health Export File</div>
+                <div style="font-size: 11px; color: var(--text-tertiary); margin-top: 4px;">
+                  Supports `export.xml`, CSV, or JSON
+                </div>
+                <input type="file" id="input-health-file" accept=".xml,.csv,.json" style="display: none;" />
+              </label>
+              <button id="btn-demo-apple-xml" class="btn" style="width: 100%;">
+                Test with Sample Apple Health XML
+              </button>
+            </div>
+
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">iPhone Wi-Fi LAN Webhook</h3>
+                  <p class="card-subtitle">Send Sleep &amp; Eat data from iPhone Shortcuts over LAN</p>
+                </div>
+                <span class="pill pill-success">LAN Ready</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">MacBook Air M2 LAN Endpoint</label>
+                <div class="mono-code" id="health-webhook-url" style="padding: 8px; word-break: break-all;">
+                  http://127.0.0.1:3000/api/health/webhook
+                </div>
+              </div>
+              <p style="font-size: 12px; color: var(--text-secondary); margin: 8px 0 14px;">
+                In iPhone <strong>Shortcuts</strong> → Add <em>"Find Health Samples"</em> → <em>"Get Contents of URL"</em> (`POST` JSON) to sync over Wi-Fi.
+              </p>
+              <button id="btn-simulate-webhook" class="btn" style="width: 100%;">
+                Simulate iPhone Webhook Push
+              </button>
+            </div>
+
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Quick Log Sleep / Meal</h3>
+                  <p class="card-subtitle">Record today's sleep hours or meal calories</p>
+                </div>
+              </div>
+              <form id="form-health-manual">
+                <div class="grid-2" style="gap: 8px;">
+                  <div class="form-group">
+                    <label class="form-label" for="hl-type">Metric Type</label>
+                    <select id="hl-type" class="form-select">
+                      <option value="sleep">Sleep (Hours)</option>
+                      <option value="nutrition">Meal (Calories kcal)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="hl-date">Date</label>
+                    <input type="date" id="hl-date" class="form-input" required />
+                  </div>
+                </div>
+                <div class="grid-2" style="gap: 8px;">
+                  <div class="form-group">
+                    <label class="form-label" for="hl-val" id="hl-val-label">Hours Slept (e.g. 7.8)</label>
+                    <input type="number" step="0.1" id="hl-val" class="form-input" value="7.8" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="hl-sec" id="hl-sec-label">Deep Sleep (hrs) / Protein (g)</label>
+                    <input type="number" step="0.1" id="hl-sec" class="form-input" value="2.0" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="hl-label">Description</label>
+                  <input type="text" id="hl-label" class="form-input" placeholder="e.g., Salmon Rice Bowl & Matcha" required />
+                </div>
+                <button type="submit" class="btn btn-prominent" style="width: 100%;">Save Health Log</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 6 (PROTECTED): IP / NETWORK & BIOMETRIC SECURITY
+             ================================================================ -->
+        <section id="view-network" class="view-panel" aria-label="IP Network and Biometric Security">
+          <div class="grid-2" style="margin-bottom: 22px;">
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">MacBook Air M2 Biometric Security</h3>
+                  <p class="card-subtitle">Hardware WebAuthn Touch ID Passkeys &amp; FaceTime HD Camera Face ID</p>
+                </div>
+                <span class="pill pill-success" id="bio-status-pill">Secure Enclave Ready</span>
+              </div>
+
+              <div class="grid-2" style="gap: 12px; margin-bottom: 14px;">
+                <div style="padding: 14px; border-radius: var(--radius-md); background: var(--surface-secondary);">
+                  <div style="font-weight: 600; font-size: 13px; margin-bottom: 4px;">Touch ID (WebAuthn Passkey)</div>
+                  <p style="font-size: 12px; color: var(--text-secondary); margin: 0 0 10px;">
+                    Uses FIDO2 `platform` authenticator inside your MacBook Air M2 fingerprint sensor.
+                  </p>
+                  <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                    <button id="btn-enroll-touchid" class="btn btn-prominent btn-sm">Register Touch ID</button>
+                    <button id="btn-test-touchid" class="btn btn-sm">Test Touch ID</button>
+                  </div>
+                </div>
+
+                <div style="padding: 14px; border-radius: var(--radius-md); background: var(--surface-secondary);">
+                  <div style="font-weight: 600; font-size: 13px; margin-bottom: 4px;">Webcam Face ID Scanner</div>
+                  <p style="font-size: 12px; color: var(--text-secondary); margin: 0 0 10px;">
+                    Captures a 64-zone facial biometric signature from your MacBook FaceTime camera.
+                  </p>
+                  <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                    <button id="btn-open-face-enroll" class="btn btn-sm">Enroll / Test Face ID</button>
+                  </div>
+                </div>
+              </div>
+
+              <div id="passkeys-list" style="font-size: 12px; color: var(--text-secondary);"></div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Live IP &amp; Network Interface Inspector</h3>
+                  <p class="card-subtitle">Real-time socket &amp; interface telemetry for `LAB_BasicNetwork`</p>
+                </div>
+                <button id="btn-refresh-net" class="btn btn-sm">Refresh Telemetry</button>
+              </div>
+
+              <div class="grid-3" style="gap: 10px; margin-bottom: 14px;">
+                <div style="padding: 10px; border-radius: var(--radius-sm); background: var(--surface-secondary);">
+                  <div style="font-size: 11px; color: var(--text-tertiary);">Client Request IP</div>
+                  <div class="mono-code" id="net-client-ip" style="font-size: 14px; font-weight: 700;">127.0.0.1</div>
+                </div>
+                <div style="padding: 10px; border-radius: var(--radius-sm); background: var(--surface-secondary);">
+                  <div style="font-size: 11px; color: var(--text-tertiary);">Mac Server LAN IPv4</div>
+                  <div class="mono-code" id="net-lan-ip" style="font-size: 14px; font-weight: 700;">192.168.1.x</div>
+                </div>
+                <div style="padding: 10px; border-radius: var(--radius-sm); background: var(--surface-secondary);">
+                  <div style="font-size: 11px; color: var(--text-tertiary);">Host / Port</div>
+                  <div class="mono-code" id="net-hostname" style="font-size: 13px; font-weight: 600;">MacBook-Air:3000</div>
+                </div>
+              </div>
+
+              <div style="font-size: 12px; font-weight: 600; margin-bottom: 6px;">Active macOS Network Interfaces (`ifconfig`)</div>
+              <div id="net-interfaces-list" style="display: flex; flex-direction: column; gap: 6px;"></div>
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-bottom: 22px;">
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Network Ping, Latency &amp; DNS Resolver</h3>
+                  <p class="card-subtitle">Test ICMP echo / TCP handshake RTT and DNS resolution from your server</p>
+                </div>
+              </div>
+              <form id="form-net-ping" style="display: flex; gap: 8px; margin-bottom: 12px;">
+                <input
+                  type="text"
+                  id="input-ping-host"
+                  class="form-input"
+                  value="1.1.1.1"
+                  placeholder="Enter IP or hostname (e.g. 1.1.1.1, 8.8.8.8, google.com)"
+                  required
+                />
+                <button type="submit" id="btn-run-ping" class="btn btn-prominent">Run Ping &amp; DNS Probe</button>
+              </form>
+              <div class="prompt-chips" style="margin-bottom: 10px;">
+                <button type="button" class="prompt-chip ping-preset" data-host="127.0.0.1">Loopback (127.0.0.1)</button>
+                <button type="button" class="prompt-chip ping-preset" data-host="1.1.1.1">Cloudflare DNS (1.1.1.1)</button>
+                <button type="button" class="prompt-chip ping-preset" data-host="8.8.8.8">Google DNS (8.8.8.8)</button>
+                <button type="button" class="prompt-chip ping-preset" data-host="github.com">github.com</button>
+              </div>
+              <div id="ping-result-box" class="terminal-output">Ready to probe. Click "Run Ping &amp; DNS Probe" above.</div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">IP Access Control List (ACL) &amp; Subnet Firewall</h3>
+                  <p class="card-subtitle">Control which IP addresses/CIDR subnets can access your hub</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="select-acl-mode">Active Network Firewall Mode</label>
+                <select id="select-acl-mode" class="form-select">
+                  <option value="allow_all_log">Allow All &amp; Audit Every IP (Default)</option>
+                  <option value="lan_only">Private LAN &amp; Loopback Only (127.0.0.1, 192.168.x.x, 10.x.x.x)</option>
+                  <option value="custom_rules">Strict CIDR Rule Enforcement (Explicit Allow/Block Table)</option>
+                </select>
+              </div>
+
+              <div style="padding: 10px 12px; border-radius: var(--radius-sm); background: var(--surface-secondary); margin-bottom: 12px;">
+                <div style="font-size: 12px; font-weight: 600; margin-bottom: 6px;">Test / Simulate Incoming Client IP Packet</div>
+                <div style="display: flex; gap: 8px;">
+                  <input type="text" id="input-sim-ip" class="form-input" value="203.0.113.42" />
+                  <button type="button" id="btn-sim-ip" class="btn btn-sm">Simulate Check</button>
+                </div>
+                <div id="sim-ip-result" style="font-size: 12px; margin-top: 6px;"></div>
+              </div>
+
+              <form id="form-add-ip-rule" style="display: flex; gap: 6px; margin-bottom: 10px;">
+                <input type="text" id="rule-cidr" class="form-input" placeholder="CIDR (e.g. 192.168.1.0/24)" required />
+                <select id="rule-action" class="form-select" style="width: 110px;">
+                  <option value="allow">ALLOW</option>
+                  <option value="block">BLOCK</option>
+                </select>
+                <input type="text" id="rule-label" class="form-input" placeholder="Rule Label" required />
+                <button type="submit" class="btn btn-sm">+ Rule</button>
+              </form>
+
+              <div id="ip-rules-list" style="display: flex; flex-direction: column; gap: 6px; max-height: 170px; overflow-y: auto;"></div>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Real-Time Network &amp; Biometric Security Audit Log</h3>
+                <p class="card-subtitle">Tracks every login, Touch ID / Face ID verification, Vault reveal, and IP firewall event</p>
+              </div>
+            </div>
+            <div style="overflow-x: auto;">
+              <table class="vault-table" aria-label="Security Audit Log">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Client IP</th>
+                    <th>Event Type</th>
+                    <th>Auth / Protocol</th>
+                    <th>Status</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody id="audit-log-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       ON-DEMAND BIOMETRIC / PASSCODE SHEET (Triggered ONLY for Protected Vaults)
+       ====================================================================== -->
+  <div id="lock-overlay" class="lock-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="lock-title">
+    <div class="lock-sheet">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="brand-mark">
+          <div class="brand-glyph">C</div>
+          <div class="brand-titles">
+            <span class="brand-name" id="lock-title">Unlock Protected Section</span>
+            <span class="brand-subtitle" id="lock-target-label">Biometric or Passcode Verification Required</span>
+          </div>
+        </div>
+        <button type="button" id="btn-cancel-lock" class="btn btn-ghost btn-sm">Cancel</button>
+      </div>
+
+      <p style="font-size: 13px; color: var(--text-secondary); margin: 0 0 16px;">
+        This section contains private records. Verify with <strong>Touch ID</strong>, <strong>Webcam Face ID</strong>, or your Passcode to continue.
+      </p>
+
+      <!-- Method 1: Touch ID (WebAuthn Platform Passkey) -->
+      <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+        <button id="btn-unlock-touchid" class="btn btn-prominent" style="flex: 1;">
+          Unlock with Touch ID
+        </button>
+        <button id="btn-register-touchid-modal" class="btn" title="First time? Enroll Touch ID on this MacBook">
+          + Enroll Touch ID
+        </button>
+      </div>
+
+      <!-- Method 2: Webcam Face ID Scanner -->
+      <div style="padding: 12px; border-radius: var(--radius-md); background: var(--surface-secondary); margin-bottom: 14px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-size: 12px; font-weight: 600;">Webcam Face ID Verification</span>
+          <div style="display: flex; gap: 6px;">
+            <button type="button" id="btn-start-camera" class="btn btn-sm">Open Camera</button>
+            <button type="button" id="btn-verify-face" class="btn btn-prominent btn-sm" style="display: none;">Verify Face</button>
+            <button type="button" id="btn-enroll-face" class="btn btn-sm" style="display: none;">Enroll Face</button>
+          </div>
+        </div>
+
+        <div id="camera-box" class="camera-viewport" style="display: none;">
+          <video id="webcam-video" autoplay playsinline muted></video>
+          <div class="face-reticle"></div>
+          <canvas id="webcam-canvas" width="64" height="64" style="display: none;"></canvas>
+        </div>
+        <div id="face-status-msg" style="font-size: 11px; color: var(--text-tertiary); margin-top: 6px;">
+          Click "Open Camera" to verify with your MacBook Air M2 camera.
+        </div>
+      </div>
+
+      <!-- Method 3: Passcode Fallback -->
+      <form id="form-unlock-password" style="display: flex; gap: 8px;">
+        <input
+          type="password"
+          id="input-master-password"
+          class="form-input"
+          placeholder="Passcode (default: admin123)"
+          required
+        />
+        <button type="submit" class="btn">Unlock</button>
+      </form>
+      <div id="lock-error-msg" style="font-size: 12px; color: var(--signal-danger); margin-top: 8px; min-height: 18px;"></div>
+    </div>
+  </div>
+
+  <div id="toast-banner" class="toast-banner hidden" role="status" aria-live="polite"></div>
+
+  <script src="/app.js?v=5"></script>
+</body>
+</html>
