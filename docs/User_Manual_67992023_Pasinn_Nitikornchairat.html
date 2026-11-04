@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>User Manual - 67992023 Pasinn Nitikornchairat - Po Second Brain</title>
+<style>
+  @page {
+    size: A4;
+    margin: 16mm 15mm 16mm 15mm;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    color: #1d1d1f;
+    line-height: 1.55;
+    font-size: 10.5pt;
+    margin: 0;
+    padding: 0;
+  }
+  .header-banner {
+    border-bottom: 2px solid #007aff;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 20pt;
+    font-weight: 800;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.02em;
+    color: #111;
+  }
+  .subtitle {
+    font-size: 11pt;
+    color: #555;
+    margin: 0;
+  }
+  table.meta-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px 0;
+    font-size: 10pt;
+  }
+  table.meta-table th, table.meta-table td {
+    border: 1px solid #d2d2d7;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  table.meta-table th {
+    background: #f5f5f7;
+    width: 32%;
+    font-weight: 700;
+  }
+  a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  h2 {
+    font-size: 14.5pt;
+    font-weight: 700;
+    color: #111;
+    border-bottom: 1px solid #e5e5ea;
+    padding-bottom: 5px;
+    margin-top: 22px;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #0066cc;
+    margin: 16px 0 8px 0;
+  }
+  p, li {
+    font-size: 10pt;
+    color: #2c2c2e;
+  }
+  ul {
+    margin: 8px 0 14px 0;
+    padding-left: 20px;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+  .screenshot-wrap {
+    margin: 8px 0 10px 0;
+    border: 1px solid #d2d2d7;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #141519;
+  }
+  .screenshot-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .section-block {
+    page-break-inside: avoid;
+    margin-bottom: 18px;
+  }
+  .code-box {
+    background: #f5f5f7;
+    border: 1px solid #d2d2d7;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 9.5pt;
+    white-space: pre-wrap;
+  }
+</style>
+</head>
+<body>
+  <div class="header-banner">
+    <h1>Po Second Brain — User Manual &amp; Technical Concept Guide</h1>
+    <p class="subtitle">Course Lab: LAB_BasicNetwork (1. Useful Functions · 2. IP/Network · 3. Biometric &amp; Cryptographic Security)</p>
+  </div>
+
+  <table class="meta-table">
+    <tr><th>Student Name</th><td><strong>Pasinn Nitikornchairat</strong></td></tr>
+    <tr><th>Student ID</th><td><strong>67992023</strong></td></tr>
+    <tr><th>GitHub Repository Link</th><td><a href="https://github.com/67992023-cmd/po-second-brain">https://github.com/67992023-cmd/po-second-brain</a></td></tr>
+    <tr><th>Online User Manual (GitHub)</th><td><a href="https://github.com/67992023-cmd/po-second-brain/blob/main/USER_MANUAL.md">https://github.com/67992023-cmd/po-second-brain/blob/main/USER_MANUAL.md</a></td></tr>
+    <tr><th>Local Mac Application URL</th><td><a href="http://localhost:3000">http://localhost:3000</a> (Default Vault Passcode: <code>admin123</code>)</td></tr>
+    <tr><th>Local Wi-Fi LAN Webhook URL</th><td><a href="http://10.111.9.122:3000">http://10.111.9.122:3000/api/health/webhook</a> (iPhone Apple Health Sync)</td></tr>
+  </table>
+
+  <h2>1. Core Concept &amp; System Architecture</h2>
+  <p>
+    <strong>Po Second Brain</strong> is a full-stack personal Life Ledger, Local AI Second Brain, and Network Security Hub built with zero external dependencies (Python 3 Standard Library + SQLite3 + Apple Human Interface Guidelines Liquid Glass UI). It unifies three core pillars:
+  </p>
+  <ul>
+    <li><strong>Pillar 1 — Useful Everyday Functions &amp; Second Brain AI:</strong> Integrates Work Calendar &amp; Milestones, Apple Health (Sleep Recovery &amp; Daily Calories/Protein), Personal Diary Library, and AES-256-CTR Password Vault into a local SQLite database connected to <strong>Ollama (qwen2.5:7b)</strong> and Cloud Free-Tier LLM APIs (Groq Llama 3.3 70B, Google Gemini 2.5 Flash, OpenRouter) with autonomous <code>[ACTION: {...}]</code> execution and 1-click Undo.</li>
+    <li><strong>Pillar 2 — IP &amp; Network Engineering (LAB_BasicNetwork):</strong> Provides live Client/Server IPv4 telemetry, macOS <code>ifconfig</code> interface inspection, ICMP Ping / TCP RTT &amp; DNS Resolution diagnostics, a CIDR Subnet Firewall &amp; Packet Simulator, and a real-time Security &amp; Network Audit Log.</li>
+    <li><strong>Pillar 3 — On-Demand Biometric &amp; Cryptographic Security:</strong> Everyday dashboard views open immediately without friction, while Protected Vaults (Diary Library, Password Vault, IP &amp; Security) require hardware <strong>MacBook Air M2 Touch ID (WebAuthn Passkeys)</strong>, <strong>192-Dimensional Sobel Gradient Webcam Face ID</strong> (strict 85.0% zero-mean structural threshold), or <strong>PBKDF2-HMAC-SHA256 Passcode (admin123)</strong>.</li>
+  </ul>
+
+  <div class="screenshot-wrap" style="max-height: 290px;">
+    <img src="file:///Users/po/Desktop/LAB_BasicNetwork/public/ollama-qwen-showcase.jpg" alt="Ollama and Qwen 2.5 7B Architecture" />
+  </div>
+
+  <h2>2. Screen-by-Screen Feature Walkthrough</h2>
+  
+    <div class="section-block">
+      <h3>2.1 Overview Summary Dashboard (Entry Page)</h3>
+      <div class="screenshot-wrap">
+        <img src="file:///Users/po/Desktop/LAB_BasicNetwork/docs/screenshots/01_overview_dashboard.png" alt="2.1 Overview Summary Dashboard (Entry Page)" />
+      </div>
+      <ul><li>Purpose: Serves as the clean entry dashboard inspired by Apple Health and macOS Sequoia, featuring the &#x27;Po second brain&#x27; sidebar and top Liquid Glass toolbar.</li><li>3 Apple Donut Ring Charts: (1) Sleep Recovery (7.8 hrs / 98% of 8.0 hr goal), (2) Daily Calories (1,840 kcal / 88% of 2,100 kcal target &amp; 122g Protein), and (3) Calendar Tasks (1 / 6 completed with a 1-click Full Page Calendar button).</li><li>Quick Second Brain AI Command Bar: Execute natural-language commands such as &#x27;Schedule Network Lab tomorrow at 2pm&#x27; or &#x27;I slept 8 hours and ate 650 kcal&#x27; directly from the entry page.</li><li>Ollama &amp; Qwen 2.5 7B AI Model Showcase: Displays the local LLM architecture visual, model ID (qwen2.5:7b · 7.61B parameters · Q4_K_M 4.7 GB GGUF · 32,768 token context window), and local API endpoint (127.0.0.1:11434/api/chat).</li></ul>
+    </div>
+    
+    <div class="section-block">
+      <h3>2.2 Clean Liquid Glass AI Model Selector (Top Toolbar)</h3>
+      <div class="screenshot-wrap">
+        <img src="file:///Users/po/Desktop/LAB_BasicNetwork/docs/screenshots/02_ai_liquid_glass_picker.png" alt="2.2 Clean Liquid Glass AI Model Selector (Top Toolbar)" />
+      </div>
+      <ul><li>Purpose: Provides a floating Apple Liquid Glass popover menu (backdrop-filter: blur(28px) saturate(190%)) in the top toolbar for instant 1-click AI model switching.</li><li>On-Device &amp; Offline (MacBook Air M2): Switch between Qwen 2.5 7B (Ollama) running 100% offline at localhost:11434, Auto Hybrid Router, and the Built-in Deterministic Smart Engine.</li><li>Cloud Free-Tier APIs (For External Web Hosting): Switch to Google Gemini 2.5 Flash, Groq Llama 3.3 70B Versatile, or OpenRouter Free Models when the website is hosted online.</li></ul>
+    </div>
+    
+    <div class="section-block">
+      <h3>2.3 Full-Page Calendar &amp; Work Timeline</h3>
+      <div class="screenshot-wrap">
+        <img src="file:///Users/po/Desktop/LAB_BasicNetwork/docs/screenshots/03_full_page_calendar.png" alt="2.3 Full-Page Calendar &amp; Work Timeline" />
+      </div>
+      <ul><li>Purpose: Full-width monthly schedule and milestone checklist with natural-language AI scheduling.</li><li>AI Calendar Agent Bar: Type natural sentences (&#x27;Add Network Lab tomorrow from 2pm to 4pm&#x27;) and Qwen 2.5 / Second Brain automatically extracts the date, start/end times, category, and priority.</li><li>Full-Width Month Calendar &amp; Full-Screen Mode: Spans 100% of the workspace width with tall day cells showing up to 4 event chips per day. Clicking &#x27;Expand Full Screen&#x27; collapses the sidebar and bottom panels so the calendar fills the entire window.</li></ul>
+    </div>
+    
+    <div class="section-block">
+      <h3>2.4 Apple Health — Sleep &amp; Nutrition Telemetry + iPhone Wi-Fi LAN Webhook</h3>
+      <div class="screenshot-wrap">
+        <img src="file:///Users/po/Desktop/LAB_BasicNetwork/docs/screenshots/04_apple_health_sleep_eat.png" alt="2.4 Apple Health — Sleep &amp; Nutrition Telemetry + iPhone Wi-Fi LAN Webhook" />
+      </div>
+      <ul><li>Purpose: Tracks personal sleep recovery (hours &amp; deep sleep) and daily nutrition (calories &amp; protein grams) imported from Apple Health.</li><li>Apple Health XML / CSV / JSON Importer: Parses Apple Health export.xml records (HKCategoryTypeIdentifierSleepAnalysis, HKQuantityTypeIdentifierDietaryEnergyConsumed, HKQuantityTypeIdentifierDietaryProtein) as well as CSV and JSON files.</li><li>iPhone Shortcut Wi-Fi LAN Webhook (POST http://10.111.9.122:3000/api/health/webhook): Allows 1-tap automated syncing from an iPhone on the same Wi-Fi LAN via Apple Shortcuts.</li></ul>
+    </div>
+    
+    <div class="section-block">
+      <h3>2.5 Second Brain AI Studio — RAG Memory &amp; Autonomous Action Agent</h3>
+      <div class="screenshot-wrap">
+        <img src="file:///Users/po/Desktop/LAB_BasicNetwork/docs/screenshots/05_second_brain_ai_studio.png" alt="2.5 Second Brain AI Studio — RAG Memory &amp; Autonomous Action Agent" />
+      </div>
+      <ul><li>Purpose: Conversational AI studio with full Retrieval-Augmented Generation (RAG) over your personal SQLite database.</li><li>Cross-Domain RAG Context Injection: Automatically retrieves upcoming Calendar milestones, recent Diary entries, 7-day Sleep &amp; Calorie averages, Core Memories, and privacy-redacted Password Vault metadata (AES-256-CTR ciphertexts are never sent to LLMs).</li><li>Autonomous Database Actions &amp; 1-Click Undo: Emits structured [ACTION: {...}] payloads (add_event, add_diary, log_health, add_memory) that mutate SQLite and render an Action Receipt with a 1-click Undo button.</li></ul>
+    </div>
+    
+    <div class="section-block">
+      <h3>2.6 On-Demand Biometric &amp; Passcode Security Gate</h3>
+      <div class="screenshot-wrap">
+        <img src="file:///Users/po/Desktop/LAB_BasicNetwork/docs/screenshots/06_biometric_security_gate.png" alt="2.6 On-Demand Biometric &amp; Passcode Security Gate" />
+      </div>
+      <ul><li>Purpose: Selective security gate that triggers ONLY when opening Protected Sections (Diary Library, Password Vault, IP &amp; Security), keeping daily views fast and frictionless.</li><li>1. MacBook Air M2 Touch ID (WebAuthn / FIDO2 Passkey): Hardware Secure Enclave fingerprint verification via navigator.credentials.</li><li>2. 192-Dimensional Sobel Gradient &amp; Facial Geometry Face ID: Captures a 4-frame burst over 210ms from the central 32x48 facial oval and extracts 192 Z-score normalized features (64 facial topography zones, 64 horizontal/vertical Sobel edge gradients across eyes/nose/mouth, and 64 chromaticity/symmetry ratios).</li><li>Strict Anti-Spoofing &amp; Owner Threshold (&gt;= 85.0%): Combines zero-mean Pearson correlation with L1/L2 distance penalties so the owner passes (~92%–99%) while a friend&#x27;s face is rejected (HTTP 401 Unauthorized). Also hides the Enroll button on the lock screen once an owner profile is enrolled.</li><li>3. Master Passcode (PBKDF2-HMAC-SHA256): Verified using 120,000 iterations of SHA-256 with random salt and constant-time hmac.compare_digest (Default passcode: admin123).</li></ul>
+    </div>
+    
+    <div class="section-block">
+      <h3>2.7 Protected Personal Diary Library</h3>
+      <div class="screenshot-wrap">
+        <img src="file:///Users/po/Desktop/LAB_BasicNetwork/docs/screenshots/07_diary_library.png" alt="2.7 Protected Personal Diary Library" />
+      </div>
+      <ul><li>Purpose: Distraction-free split-view notebook for personal reflections, network lab notes, and Second Brain ideas.</li><li>Editorial Typography: Uses Apple&#x27;s New York serif typeface (ui-serif, &#x27;New York&#x27;, Georgia, serif) with notebook filtering, mood tags, full-text search, and automatic indexing into the Second Brain RAG memory.</li></ul>
+    </div>
+    
+    <div class="section-block">
+      <h3>2.8 Protected Personal &amp; Game Password Vault (AES-256-CTR)</h3>
+      <div class="screenshot-wrap">
+        <img src="file:///Users/po/Desktop/LAB_BasicNetwork/docs/screenshots/08_password_vault.png" alt="2.8 Protected Personal &amp; Game Password Vault (AES-256-CTR)" />
+      </div>
+      <ul><li>Purpose: Encrypted credential manager for both Personal Accounts (GitHub, Apple ID, University Portal) and Game Accounts (Steam, Riot Games / Valorant, Hoyoverse).</li><li>Cryptographic Architecture: Encrypts every secret at rest using a 256-bit key derived via PBKDF2-HMAC-SHA256 (100,000 iterations), a unique 16-byte random nonce, an HMAC-SHA256 CTR stream cipher, and a 16-byte HMAC authentication tag (enc:v1:...). Includes 1-click Reveal/Hide, Copy, and a 20-character CSPRNG generator.</li></ul>
+    </div>
+    
+    <div class="section-block">
+      <h3>2.9 Protected IP, Network &amp; Subnet Firewall Lab (LAB_BasicNetwork)</h3>
+      <div class="screenshot-wrap">
+        <img src="file:///Users/po/Desktop/LAB_BasicNetwork/docs/screenshots/09_ip_network_security_lab.png" alt="2.9 Protected IP, Network &amp; Subnet Firewall Lab (LAB_BasicNetwork)" />
+      </div>
+      <ul><li>Purpose: Complete networking and security laboratory fulfilling all LAB_BasicNetwork course objectives.</li><li>Live IP &amp; Network Interface Inspector: Displays Client IP (127.0.0.1), Server Wi-Fi LAN IPv4 (10.111.9.122), Hostname/Port (3000), and active macOS ifconfig interfaces (lo0 Loopback, en0 Private LAN).</li><li>ICMP Ping, TCP Latency &amp; DNS Resolver: Resolves hostnames (1.1.1.1, 8.8.8.8, github.com) to IPv4, measures DNS lookup latency in ms, and executes an ICMP ping / TCP RTT probe.</li><li>IP Access Control List (ACL) &amp; CIDR Subnet Firewall: Evaluates incoming IPs against CIDR rules (127.0.0.1/32, 192.168.0.0/16, 10.0.0.0/8, 203.0.113.0/24) with an interactive Packet Simulator and real-time Security &amp; Network Audit Log.</li></ul>
+    </div>
+    
+
+  <div class="section-block">
+    <h2>3. How to Run &amp; Evaluate</h2>
+    <div class="code-box">git clone https://github.com/67992023-cmd/po-second-brain.git
+cd po-second-brain
+python3 server.py
+# Open http://localhost:3000 in browser (Default Protected Vault Passcode: admin123)
+# Optional Local LLM: ollama pull qwen2.5:7b &amp;&amp; ollama serve</div>
+  </div>
+</body>
+</html>
