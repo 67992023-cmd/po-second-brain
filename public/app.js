@@ -123,6 +123,9 @@ function applyUrlDeepLink() {
   if (window.__deepLinkApplied) return;
   window.__deepLinkApplied = true;
   const params = new URLSearchParams(window.location.search);
+  if (params.get("theme") === "light") {
+    document.documentElement.setAttribute("data-appearance", "light");
+  }
   if (params.get("demo_unlock") === "1") {
     STATE.vaultUnlocked = true;
     STATE.authMethod = "Touch ID / Face ID (192-D)";
