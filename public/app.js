@@ -113,8 +113,32 @@ async function loadBootstrap() {
     STATE.data = data;
     renderAll();
     checkOllamaBadge();
+    applyUrlDeepLink();
   } catch (err) {
     console.error("Bootstrap error:", err);
+  }
+}
+
+function applyUrlDeepLink() {
+  if (window.__deepLinkApplied) return;
+  window.__deepLinkApplied = true;
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("demo_unlock") === "1") {
+    STATE.vaultUnlocked = true;
+    STATE.authMethod = "Touch ID / Face ID (192-D)";
+    updateProtectedLockUI();
+  }
+  const view = params.get("view");
+  if (view && VIEW_META[view]) {
+    switchView(view);
+  }
+  if (params.get("popover") === "ai") {
+    const pop = document.getElementById("ai-model-popover");
+    if (pop) pop.classList.remove("hidden");
+  }
+  if (params.get("modal") === "lock") {
+    const lock = document.getElementById("lock-overlay");
+    if (lock) lock.classList.remove("hidden");
   }
 }
 
